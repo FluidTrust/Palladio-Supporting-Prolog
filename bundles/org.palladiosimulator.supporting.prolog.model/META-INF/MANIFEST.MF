@@ -17,7 +17,6 @@ Export-Package: org.palladiosimulator.supporting.prolog.model.prolog,
  org.palladiosimulator.supporting.prolog.model.prolog.impl,
  org.palladiosimulator.supporting.prolog.model.prolog.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.core.runtime,
- de.uka.ipd.sdq.identifier;bundle-version="4.2.0";visibility:=reexport
+ org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.palladiosimulator.supporting.prolog.model
