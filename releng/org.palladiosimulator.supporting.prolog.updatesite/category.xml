@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.palladiosimulator.supporting.prolog.model.feature">
+      <category name="org.palladiosimulator.support.category"/>
+   </feature>
+   <feature id="org.palladiosimulator.supporting.prolog.serializer.feature">
+      <category name="org.palladiosimulator.support.category"/>
+   </feature>
+   <feature id="org.palladiosimulator.supporting.prolog.ui.feature">
+      <category name="org.palladiosimulator.support.category"/>
+   </feature>
+   <feature id="org.palladiosimulator.supporting.prolog.model.feature.source">
+      <category name="org.palladiosimulator.support.source.category"/>
+   </feature>
+   <feature id="org.palladiosimulator.supporting.prolog.serializer.feature.source">
+      <category name="org.palladiosimulator.support.source.category"/>
+   </feature>
+   <feature id="org.palladiosimulator.supporting.prolog.ui.feature.source">
+      <category name="org.palladiosimulator.support.source.category"/>
+   </feature>
+   <category-def name="org.palladiosimulator.support.category" label="Palladio Supporting Features">
+      <description>
+         Features that support the Palladio Bench tooling, but also could be used independently
+      </description>
+   </category-def>
+   <category-def name="org.palladiosimulator.support.source.category" label="Palladio Supporting Features Source">
+      <description>
+         Source code of the features that support the Palladio Bench tooling, but also could be used independently
+      </description>
+   </category-def>
+</site>
+

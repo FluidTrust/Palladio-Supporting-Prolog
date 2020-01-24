@@ -1,0 +1,26 @@
+module clean
+
+
+import tools.mdsd.ecoreworkflow.mwe2lib.bean.EclipseRCPSupportingStandaloneSetup
+import tools.mdsd.ecoreworkflow.mwe2lib.component.URISupportingDirectoryCleaner
+
+var workspaceRoot = "../../"
+
+Workflow {
+	bean = EclipseRCPSupportingStandaloneSetup {
+		scanClassPath = true
+		platformUri = workspaceRoot
+	}
+
+	component = URISupportingDirectoryCleaner {
+		exclude = ".gitkeep"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.model/src-gen"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.model.edit/src-gen"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.model.editor/src-gen"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog/src-gen"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.ide/src-gen"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.tests/src-gen"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.ui/src-gen"
+		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.ui.tests/src-gen"
+	}
+}

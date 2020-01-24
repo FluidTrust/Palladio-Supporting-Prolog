@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.palladiosimulator.supporting.prolog.model/src-gen"
+    editDirectory="/org.palladiosimulator.supporting.prolog.model.edit/src-gen" editorDirectory="/org.palladiosimulator.supporting.prolog.model.editor/src-gen"
+    modelPluginID="org.palladiosimulator.supporting.prolog.model" modelName="Prolog"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.palladiosimulator.supporting.prolog.model.tests/src-gen"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    importOrganizing="true" eclipsePlatformVersion="2019-09">
+  <foreignModel>prolog.ecore</foreignModel>
+  <genPackages prefix="Prolog" basePackage="org.palladiosimulator.supporting.prolog.model"
+      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+      fileExtensions="prolog" ecorePackage="prolog.ecore#/">
+    <genClasses ecoreClass="prolog.ecore#//Program">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//Program/clauses"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="prolog.ecore#//Clause"/>
+    <genClasses ecoreClass="prolog.ecore#//Term"/>
+    <genClasses ecoreClass="prolog.ecore#//CompoundTerm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//CompoundTerm/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//CompoundTerm/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="prolog.ecore#//AtomicNumber">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//AtomicNumber/value"/>
+    </genClasses>
+    <genClasses ecoreClass="prolog.ecore#//AtomicQuotedString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//AtomicQuotedString/value"/>
+    </genClasses>
+    <genClasses ecoreClass="prolog.ecore#//List">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//List/heads"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//List/tails"/>
+    </genClasses>
+    <genClasses ecoreClass="prolog.ecore#//Fact">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//Fact/head"/>
+    </genClasses>
+    <genClasses ecoreClass="prolog.ecore#//Rule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//Rule/head"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//Rule/body"/>
+    </genClasses>
+    <nestedGenPackages prefix="Directives" disposableProviderFactory="true" ecorePackage="prolog.ecore#//directives">
+      <genClasses image="false" ecoreClass="prolog.ecore#//directives/Directive">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//directives/Directive/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//directives/Directive/predicates"/>
+      </genClasses>
+      <genClasses ecoreClass="prolog.ecore#//directives/PredicateIndicator">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//directives/PredicateIndicator/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//directives/PredicateIndicator/arity"/>
+      </genClasses>
+      <genClasses ecoreClass="prolog.ecore#//directives/Dynamic"/>
+      <genClasses ecoreClass="prolog.ecore#//directives/Discontiguous"/>
+      <genClasses ecoreClass="prolog.ecore#//directives/Multifile"/>
+      <genClasses ecoreClass="prolog.ecore#//directives/Public"/>
+      <genClasses ecoreClass="prolog.ecore#//directives/Volatile"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Expressions" disposableProviderFactory="true" ecorePackage="prolog.ecore#//expressions">
+      <genClasses image="false" ecoreClass="prolog.ecore#//expressions/Expression"/>
+      <genClasses image="false" ecoreClass="prolog.ecore#//expressions/UnaryExpression">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//expressions/UnaryExpression/expr"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="prolog.ecore#//expressions/BinaryExpression">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//expressions/BinaryExpression/left"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//expressions/BinaryExpression/right"/>
+      </genClasses>
+      <genClasses ecoreClass="prolog.ecore#//expressions/LogicalOr"/>
+      <genClasses image="false" ecoreClass="prolog.ecore#//expressions/Condition"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/SoftCut"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/LogicalAnd"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/NotProvable"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/LessThan"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Unification"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Univ"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/StructuralEquivalence"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/StructuralEquivalenceNotProvable"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/NumberEqual"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/LessOrEqual"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Equivalence"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/NonEqualNumber"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/GreaterThan"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/GreaterOrEqual"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/StandardOrderBefore"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/EqualOrStandardOrderBefore"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/StandardOrderAfter"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/EqualOrStandardOrderAfter"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/NotUnifiable"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Disequality"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/As"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Is"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/ParticalUnification"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/SubDict"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/ModuleCall"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Plus"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Minus"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/BinaryAnd"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/BinaryOr"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Xor"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Multiplication"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Division"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/IntegerDivision"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Div"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Rdiv"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/BitwiseShiftLeft"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Mod"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Rem"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/Power"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/PositiveNumber"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/NegativeNumber"/>
+      <genClasses ecoreClass="prolog.ecore#//expressions/BitwiseNegation"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

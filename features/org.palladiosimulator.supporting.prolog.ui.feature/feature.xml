@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.palladiosimulator.supporting.prolog.ui.feature"
+      label="Prolog Model UI Feature"
+      version="4.2.0.qualifier"
+      plugin="org.palladiosimulator.branding"
+      license-feature="org.palladiosimulator.license.epl2"
+      license-feature-version="1.0.0">
+
+   <requires>
+      <import plugin="org.palladiosimulator.branding"/>
+   </requires>
+
+   <includes
+         id="org.palladiosimulator.supporting.prolog.serializer.feature"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.palladiosimulator.supporting.prolog.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.supporting.prolog.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.supporting.prolog.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.supporting.prolog.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

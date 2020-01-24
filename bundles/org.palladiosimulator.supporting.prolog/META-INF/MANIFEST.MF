@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.palladiosimulator.supporting.prolog
+Bundle-ManifestVersion: 2
+Bundle-Name: org.palladiosimulator.supporting.prolog
+Bundle-Vendor: palladiosimulator.org
+Bundle-Version: 4.2.0.qualifier
+Bundle-SymbolicName: org.palladiosimulator.supporting.prolog; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.palladiosimulator.supporting.prolog.model;visibility:=reexport,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.palladiosimulator.supporting.prolog.generator,
+ org.palladiosimulator.supporting.prolog.serializer,
+ org.palladiosimulator.supporting.prolog.scoping,
+ org.palladiosimulator.supporting.prolog.services,
+ org.palladiosimulator.supporting.prolog.parser.antlr,
+ org.palladiosimulator.supporting.prolog,
+ org.palladiosimulator.supporting.prolog.validation,
+ org.palladiosimulator.supporting.prolog.parser.antlr.internal
+Import-Package: org.apache.log4j

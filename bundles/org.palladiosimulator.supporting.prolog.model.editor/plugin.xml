@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated prolog -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.palladiosimulator.supporting.prolog.model.prolog.presentation.PrologModelWizardID"
+            name="%_UI_PrologModelWizard_label"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.presentation.PrologModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PrologModelFile.gif">
+         <description>%_UI_PrologModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated prolog -->
+      <editor
+            id="org.palladiosimulator.supporting.prolog.model.prolog.presentation.PrologEditorID"
+            name="%_UI_PrologEditor_label"
+            icon="icons/full/obj16/PrologModelFile.gif"
+            extensions="prolog"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.presentation.PrologEditor"
+            contributorClass="org.palladiosimulator.supporting.prolog.model.prolog.presentation.PrologActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated prolog -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.palladiosimulator.supporting.prolog.model.prolog.directives.presentation.DirectivesModelWizardID"
+            name="%_UI_DirectivesModelWizard_label"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.directives.presentation.DirectivesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DirectivesModelFile.gif">
+         <description>%_UI_DirectivesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated prolog -->
+      <editor
+            id="org.palladiosimulator.supporting.prolog.model.prolog.directives.presentation.DirectivesEditorID"
+            name="%_UI_DirectivesEditor_label"
+            icon="icons/full/obj16/DirectivesModelFile.gif"
+            extensions="directives"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.directives.presentation.DirectivesEditor"
+            contributorClass="org.palladiosimulator.supporting.prolog.model.prolog.directives.presentation.DirectivesActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated prolog -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.palladiosimulator.supporting.prolog.model.prolog.expressions.presentation.ExpressionsModelWizardID"
+            name="%_UI_ExpressionsModelWizard_label"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.expressions.presentation.ExpressionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ExpressionsModelFile.gif">
+         <description>%_UI_ExpressionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated prolog -->
+      <editor
+            id="org.palladiosimulator.supporting.prolog.model.prolog.expressions.presentation.ExpressionsEditorID"
+            name="%_UI_ExpressionsEditor_label"
+            icon="icons/full/obj16/ExpressionsModelFile.gif"
+            extensions="expressions"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.expressions.presentation.ExpressionsEditor"
+            contributorClass="org.palladiosimulator.supporting.prolog.model.prolog.expressions.presentation.ExpressionsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

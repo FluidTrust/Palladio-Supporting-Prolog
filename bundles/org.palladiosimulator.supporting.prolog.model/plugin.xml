@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated prolog -->
+      <package
+            uri="http://palladiosimulator.org/supporting/prolog/0.1.0"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.PrologPackage"
+            genModel="model/prolog.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated prolog -->
+      <package
+            uri="http://palladiosimulator.org/supporting/prolog/directives/0.1.0"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.directives.DirectivesPackage"
+            genModel="model/prolog.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated prolog -->
+      <package
+            uri="http://palladiosimulator.org/supporting/prolog/expressions/0.1.0"
+            class="org.palladiosimulator.supporting.prolog.model.prolog.expressions.ExpressionsPackage"
+            genModel="model/prolog.genmodel"/>
+   </extension>
+
+</plugin>

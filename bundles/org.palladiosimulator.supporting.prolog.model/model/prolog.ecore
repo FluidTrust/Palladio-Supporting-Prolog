@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="prolog" nsURI="http://palladiosimulator.org/supporting/prolog/0.1.0"
+    nsPrefix="prolog">
+  <eClassifiers xsi:type="ecore:EClass" name="Program">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clauses" upperBound="-1"
+        eType="#//Clause" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Clause" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Term" abstract="true" eSuperTypes="#//expressions/Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CompoundTerm" eSuperTypes="#//Clause #//Term">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
+        eType="#//expressions/Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicNumber" eSuperTypes="#//Term">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicQuotedString" eSuperTypes="#//Term">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="List" eSuperTypes="#//Term">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="heads" upperBound="-1"
+        eType="#//expressions/Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tails" upperBound="-1"
+        eType="#//expressions/Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Fact" eSuperTypes="#//Clause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="head" eType="#//CompoundTerm"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rule" eSuperTypes="#//Clause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="head" eType="#//CompoundTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//expressions/Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eSubpackages name="directives" nsURI="http://palladiosimulator.org/supporting/prolog/directives/0.1.0"
+      nsPrefix="directives">
+    <eClassifiers xsi:type="ecore:EClass" name="Directive" abstract="true" eSuperTypes="#//Clause">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="predicates" upperBound="-1"
+          eType="#//directives/PredicateIndicator" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PredicateIndicator">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="arity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Dynamic" eSuperTypes="#//directives/Directive"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Discontiguous" eSuperTypes="#//directives/Directive"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Multifile" eSuperTypes="#//directives/Directive"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Public" eSuperTypes="#//directives/Directive"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Volatile" eSuperTypes="#//directives/Directive"/>
+  </eSubpackages>
+  <eSubpackages name="expressions" nsURI="http://palladiosimulator.org/supporting/prolog/expressions/0.1.0"
+      nsPrefix="expressions">
+    <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UnaryExpression" abstract="true" eSuperTypes="#//expressions/Expression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//expressions/Expression"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BinaryExpression" abstract="true"
+        eSuperTypes="#//expressions/Expression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//expressions/Expression"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//expressions/Expression"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LogicalOr" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SoftCut" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="LogicalAnd" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NotProvable" eSuperTypes="#//expressions/UnaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="LessThan" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Unification" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Univ" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StructuralEquivalence" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StructuralEquivalenceNotProvable"
+        eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NumberEqual" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="LessOrEqual" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Equivalence" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NonEqualNumber" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="GreaterThan" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="GreaterOrEqual" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StandardOrderBefore" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EqualOrStandardOrderBefore" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StandardOrderAfter" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EqualOrStandardOrderAfter" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NotUnifiable" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Disequality" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="As" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Is" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ParticalUnification" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SubDict" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ModuleCall" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Plus" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Minus" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BinaryAnd" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BinaryOr" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Xor" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Multiplication" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Division" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerDivision" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Div" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Rdiv" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BitwiseShiftLeft" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Mod" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Rem" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Power" eSuperTypes="#//expressions/BinaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PositiveNumber" eSuperTypes="#//expressions/UnaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NegativeNumber" eSuperTypes="#//expressions/UnaryExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BitwiseNegation" eSuperTypes="#//expressions/UnaryExpression"/>
+  </eSubpackages>
+</ecore:EPackage>
