@@ -1,6 +1,7 @@
 package org.palladiosimulator.supporting.prolog;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.CoreException;
@@ -40,7 +41,15 @@ public class PrologExecutableExtensionFactory implements IExecutableExtension, I
 	@Override
 	public Object create() throws CoreException {
 		try {
-			final Class<?> clazz = getBundle().loadClass(clazzName);
+			Class<?> clazz;
+			Optional<Bundle> bundle = getBundle();
+			if (bundle.isPresent()) {
+				// if running in platform
+				clazz = getBundle().get().loadClass(clazzName);
+			} else {
+				// if running standalone
+				clazz = Class.forName(clazzName);
+			}
 			final Injector injector = getInjector();
 			if (injector == null) {
 				throw handleCreationError(null);
@@ -88,8 +97,8 @@ public class PrologExecutableExtensionFactory implements IExecutableExtension, I
 				new Status(IStatus.ERROR, bundle.getSymbolicName(), message, cause));
 	}
 	
-	protected Bundle getBundle() {
-		return Activator.getInstance().getBundle();
+	protected Optional<Bundle> getBundle() {
+		return Optional.ofNullable(Activator.getInstance()).map(Activator::getBundle);
 	}
 	
 	protected Injector getInjector() {
