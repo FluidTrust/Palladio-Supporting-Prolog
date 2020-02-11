@@ -1,6 +1,8 @@
 package org.palladiosimulator.supporting.prolog.formatting
 
+import com.google.common.base.Strings
 import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import org.palladiosimulator.supporting.prolog.model.prolog.Clause
@@ -32,6 +34,13 @@ class PrologFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(Comment comment, extension IFormattableDocument document) {
+		var container = comment.eContainer
+		var containmentReference = comment.eContainmentFeature
+		var clauses = container.eGet(containmentReference) as java.util.List<EObject>
+		var commentIndex = clauses.indexOf(comment)
+		if (commentIndex > 0 && !(clauses.get(commentIndex - 1) instanceof Comment)) {
+			comment.prepend[newLines = 2; priority = 2] // higher than Clause
+		}
 		comment.append[noSpace]
 	}
 	
