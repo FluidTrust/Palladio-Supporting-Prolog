@@ -214,6 +214,7 @@
 		</content-type>
 	</extension>
 	<!-- adding resource factories -->
+	<!--
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
@@ -221,6 +222,7 @@
 			type="pl">
 		</parser>
 	</extension>
+	-->
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
 			class="org.palladiosimulator.supporting.prolog.ui.PrologExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"

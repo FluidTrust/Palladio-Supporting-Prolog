@@ -2,11 +2,17 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="prolog" nsURI="http://palladiosimulator.org/supporting/prolog/0.1.0"
     nsPrefix="prolog">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Program">
     <eStructuralFeatures xsi:type="ecore:EReference" name="clauses" upperBound="-1"
         eType="#//Clause" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Clause" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Comment" eSuperTypes="#//Clause">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Term" abstract="true" eSuperTypes="#//expressions/Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="CompoundTerm" eSuperTypes="#//Clause #//Term">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -35,8 +41,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//expressions/Expression"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlPredicate" abstract="true" eSuperTypes="#//Term"/>
+  <eClassifiers xsi:type="ecore:EClass" name="True" eSuperTypes="#//ControlPredicate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="False" eSuperTypes="#//ControlPredicate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Fail" eSuperTypes="#//ControlPredicate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Cut" eSuperTypes="#//ControlPredicate"/>
   <eSubpackages name="directives" nsURI="http://palladiosimulator.org/supporting/prolog/directives/0.1.0"
       nsPrefix="directives">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="Directive" abstract="true" eSuperTypes="#//Clause">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="predicates" upperBound="-1"
@@ -47,13 +61,23 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="arity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Dynamic" eSuperTypes="#//directives/Directive"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Discontiguous" eSuperTypes="#//directives/Directive"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Discontiguous" eSuperTypes="#//directives/Directive">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="nameHasToBeDiscontiguous"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="nameHasToBeDiscontiguous" value="self.name = 'discontiguous'"/>
+      </eAnnotations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Multifile" eSuperTypes="#//directives/Directive"/>
     <eClassifiers xsi:type="ecore:EClass" name="Public" eSuperTypes="#//directives/Directive"/>
     <eClassifiers xsi:type="ecore:EClass" name="Volatile" eSuperTypes="#//directives/Directive"/>
   </eSubpackages>
   <eSubpackages name="expressions" nsURI="http://palladiosimulator.org/supporting/prolog/expressions/0.1.0"
       nsPrefix="expressions">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="UnaryExpression" abstract="true" eSuperTypes="#//expressions/Expression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//expressions/Expression"

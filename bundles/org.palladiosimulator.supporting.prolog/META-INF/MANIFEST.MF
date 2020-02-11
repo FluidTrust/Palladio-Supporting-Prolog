@@ -12,7 +12,8 @@ Require-Bundle: org.palladiosimulator.supporting.prolog.model;visibility:=reexpo
  org.eclipse.equinox.common;bundle-version="3.5.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.eclipse.xtext.util,
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.eclipse.core.runtime;bundle-version="3.16.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.palladiosimulator.supporting.prolog.generator,
  org.palladiosimulator.supporting.prolog.serializer,
@@ -23,3 +24,4 @@ Export-Package: org.palladiosimulator.supporting.prolog.generator,
  org.palladiosimulator.supporting.prolog.validation,
  org.palladiosimulator.supporting.prolog.parser.antlr.internal
 Import-Package: org.apache.log4j
+Bundle-Activator: org.palladiosimulator.supporting.prolog.Activator
