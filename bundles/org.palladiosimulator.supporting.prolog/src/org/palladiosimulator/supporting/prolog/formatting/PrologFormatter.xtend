@@ -1,6 +1,5 @@
 package org.palladiosimulator.supporting.prolog.formatting
 
-import com.google.common.base.Strings
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
