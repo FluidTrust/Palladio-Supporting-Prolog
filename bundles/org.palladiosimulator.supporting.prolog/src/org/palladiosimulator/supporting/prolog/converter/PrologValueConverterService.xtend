@@ -16,7 +16,7 @@ class PrologValueConverterService extends Ecore2XtextTerminalConverters {
 			}
 
 			override toValue(String string, INode node) throws ValueConverterException {
-				if (!string.matches("'[^']'")) {
+				if (!string.matches("'[^']+'")) {
 					throw new ValueConverterException("Prolog strings have to be single quoted but given node is not",
 						node, null)
 				}
