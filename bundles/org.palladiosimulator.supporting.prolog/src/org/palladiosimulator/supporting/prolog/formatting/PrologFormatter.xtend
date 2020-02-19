@@ -16,6 +16,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.directives.Directive
 import org.palladiosimulator.supporting.prolog.model.prolog.directives.PredicateIndicator
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.BinaryExpression
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.LogicalAnd
+import org.palladiosimulator.supporting.prolog.model.prolog.expressions.LogicalOr
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.UnaryExpression
 import org.palladiosimulator.supporting.prolog.services.PrologGrammarAccess
 
@@ -95,6 +96,12 @@ class PrologFormatter extends AbstractFormatter2 {
 		logicalAnd.regionFor.keyword(expression_1000_xfyAccess.commaKeyword_1_1).append[newLine].prepend[noSpace]
 		logicalAnd.left.format
 		logicalAnd.right.format
+	}
+	
+	def dispatch void format(LogicalOr logicalOr, extension IFormattableDocument document) {
+		logicalOr.regionFor.keyword(expression_1100_xfyAccess.semicolonKeyword_1_1).append[newLine].prepend[noSpace]
+		logicalOr.left.format
+		logicalOr.right.format
 	}
 	
 	def dispatch void format(List list, extension IFormattableDocument document) {
