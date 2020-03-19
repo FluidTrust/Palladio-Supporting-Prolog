@@ -31,15 +31,23 @@ Program:
 ;
 
 Clause:
-	((Directive | TermClause) '.') | Comment
+	((Predicate | TermClause) '.') | Comment
 ;
 
 Comment:
 	value=PROLOG_SL_COMMENT
 ;
 
-Directive returns directives::Directive:
-	':-' (
+Predicate returns Clause:
+	':-' (TableDirective | ListDirectives)
+;
+
+TableDirective returns directives::Table:
+	'table' '(' predicate=PredicateIndicator ')' 
+;
+
+ListDirectives returns directives::Directive:
+	(
 		({directives::Dynamic} name='dynamic') |
 		({directives::Discontiguous} name='discontiguous') |
 		({directives::Multifile} name='multifile') |
@@ -50,7 +58,7 @@ Directive returns directives::Directive:
 ;
 
 PredicateIndicator returns directives::PredicateIndicator:
-	name=PROLOG_ID '/' arity=INT
+	name=(PROLOG_ID|PROLOG_STRING) '/' arity=INT
 ;
 
 TermClause returns Clause:

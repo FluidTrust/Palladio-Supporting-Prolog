@@ -14,6 +14,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//Program/clauses"/>
     </genClasses>
     <genClasses image="false" ecoreClass="prolog.ecore#//Clause"/>
+    <genClasses ecoreClass="prolog.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//Comment/value"/>
+    </genClasses>
     <genClasses ecoreClass="prolog.ecore#//Term"/>
     <genClasses ecoreClass="prolog.ecore#//CompoundTerm">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//CompoundTerm/value"/>
@@ -36,7 +39,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//Rule/head"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//Rule/body"/>
     </genClasses>
-    <nestedGenPackages prefix="Directives" disposableProviderFactory="true" ecorePackage="prolog.ecore#//directives">
+    <genClasses image="false" ecoreClass="prolog.ecore#//ControlPredicate"/>
+    <genClasses ecoreClass="prolog.ecore#//True"/>
+    <genClasses ecoreClass="prolog.ecore#//False"/>
+    <genClasses ecoreClass="prolog.ecore#//Fail"/>
+    <genClasses ecoreClass="prolog.ecore#//Cut"/>
+    <nestedGenPackages prefix="Directives" disposableProviderFactory="true" generateModelWizard="false"
+        ecorePackage="prolog.ecore#//directives">
       <genClasses image="false" ecoreClass="prolog.ecore#//directives/Directive">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prolog.ecore#//directives/Directive/name"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//directives/Directive/predicates"/>
@@ -50,8 +59,12 @@
       <genClasses ecoreClass="prolog.ecore#//directives/Multifile"/>
       <genClasses ecoreClass="prolog.ecore#//directives/Public"/>
       <genClasses ecoreClass="prolog.ecore#//directives/Volatile"/>
+      <genClasses ecoreClass="prolog.ecore#//directives/Table">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//directives/Table/predicate"/>
+      </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Expressions" disposableProviderFactory="true" ecorePackage="prolog.ecore#//expressions">
+    <nestedGenPackages prefix="Expressions" disposableProviderFactory="true" generateModelWizard="false"
+        ecorePackage="prolog.ecore#//expressions">
       <genClasses image="false" ecoreClass="prolog.ecore#//expressions/Expression"/>
       <genClasses image="false" ecoreClass="prolog.ecore#//expressions/UnaryExpression">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prolog.ecore#//expressions/UnaryExpression/expr"/>

@@ -72,6 +72,10 @@
     <eClassifiers xsi:type="ecore:EClass" name="Multifile" eSuperTypes="#//directives/Directive"/>
     <eClassifiers xsi:type="ecore:EClass" name="Public" eSuperTypes="#//directives/Directive"/>
     <eClassifiers xsi:type="ecore:EClass" name="Volatile" eSuperTypes="#//directives/Directive"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Table" eSuperTypes="#//Clause">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+          eType="#//directives/PredicateIndicator" containment="true"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="expressions" nsURI="http://palladiosimulator.org/supporting/prolog/expressions/0.1.0"
       nsPrefix="expressions">

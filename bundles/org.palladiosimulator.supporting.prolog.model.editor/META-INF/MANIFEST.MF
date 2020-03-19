@@ -9,7 +9,9 @@ Bundle-Vendor: %providerName
 Bundle-Version: 4.2.0.qualifier
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: org.palladiosimulator.supporting.prolog.model.prolog.presentation
+Export-Package: org.palladiosimulator.supporting.prolog.model.prolog.directives.presentation,
+ org.palladiosimulator.supporting.prolog.model.prolog.expressions.presentation,
+ org.palladiosimulator.supporting.prolog.model.prolog.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.palladiosimulator.supporting.prolog.model.edit;visibility:=reexport,

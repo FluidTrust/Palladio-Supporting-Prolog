@@ -14,6 +14,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.directives.Directive
 import org.palladiosimulator.supporting.prolog.model.prolog.directives.DirectivesPackage
 import org.palladiosimulator.supporting.prolog.model.prolog.directives.PredicateIndicator
+import org.palladiosimulator.supporting.prolog.model.prolog.directives.Table
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.BinaryExpression
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.LogicalAnd
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.LogicalOr
@@ -45,11 +46,11 @@ class PrologFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(Directive directive, extension IFormattableDocument document) {
-		directive.regionFor.keyword(directiveAccess.leftParenthesisKeyword_2).append[noSpace]
-		directive.regionFor.keyword(directiveAccess.colonHyphenMinusKeyword_0).surround[noSpace]
+		directive.regionFor.keyword(listDirectivesAccess.leftParenthesisKeyword_1).append[noSpace]
+		directive.regionFor.keyword(predicateAccess.colonHyphenMinusKeyword_0).surround[noSpace]
 		directive.regionFor.feature(DirectivesPackage.Literals.DIRECTIVE__NAME).surround[noSpace]
-		directive.regionFor.keyword(directiveAccess.commaKeyword_4_0).prepend[noSpace].append[space = " "]
-		directive.regionFor.keyword(directiveAccess.rightParenthesisKeyword_5).prepend[noSpace]
+		directive.regionFor.keyword(listDirectivesAccess.commaKeyword_3_0).prepend[noSpace].append[space = " "]
+		directive.regionFor.keyword(listDirectivesAccess.rightParenthesisKeyword_4).prepend[noSpace]
 		directive.predicates.forEach[format]
 		directive.predicates.forEach[append[noSpace]]
 		directive.append[newLines = 2; priority = 2] // higher than Clause
@@ -57,6 +58,16 @@ class PrologFormatter extends AbstractFormatter2 {
 	
 	def dispatch void format(PredicateIndicator predicateIndicator, extension IFormattableDocument document) {
 		predicateIndicator.regionFor.keyword(predicateIndicatorAccess.solidusKeyword_1).surround[noSpace]
+	}
+	
+	def dispatch void format(Table table, extension IFormattableDocument document) {
+		table.regionFor.keyword(predicateAccess.colonHyphenMinusKeyword_0).surround[noSpace]
+		table.regionFor.keyword(tableDirectiveAccess.tableKeyword_0).append[noSpace]
+		table.regionFor.keyword(tableDirectiveAccess.leftParenthesisKeyword_1).append[noSpace]
+		table.regionFor.keyword(tableDirectiveAccess.rightParenthesisKeyword_3).append[noSpace]
+		table.predicate.format
+		table.predicate.append[noSpace]
+		table.append[newLines = 2; priority = 2] // higher than Clause
 	}
 	
 	def dispatch void format(CompoundTerm compoundTerm, extension IFormattableDocument document) {
