@@ -1,6 +1,8 @@
 package org.palladiosimulator.supporting.prolog.formatting
 
 import com.google.inject.Inject
+import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
@@ -20,6 +22,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.LogicalA
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.LogicalOr
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.UnaryExpression
 import org.palladiosimulator.supporting.prolog.services.PrologGrammarAccess
+import org.palladiosimulator.supporting.prolog.model.prolog.PrologPackage
 
 class PrologFormatter extends AbstractFormatter2 {
 
@@ -53,7 +56,21 @@ class PrologFormatter extends AbstractFormatter2 {
 		directive.regionFor.keyword(listDirectivesAccess.rightParenthesisKeyword_4).prepend[noSpace]
 		directive.predicates.forEach[format]
 		directive.predicates.forEach[append[noSpace]]
-		directive.append[newLines = 2; priority = 2] // higher than Clause
+		if (directive.eContainer instanceof Program) {
+			val container = directive.eContainer
+			val feature = directive.eContainingFeature
+			if (feature.isMany && (feature.EType as EClass).isSuperTypeOf(PrologPackage.Literals.CLAUSE)) {
+				val featureValue = container.eGet(feature) as EList<Clause>
+				val selfIndex = featureValue.indexOf(directive)
+				val nextIndex = selfIndex + 1
+				if (nextIndex < featureValue.size) {
+					val nextValue = featureValue.get(nextIndex)
+					if (!(nextValue instanceof Directive) || directive.name != (nextValue as Directive).name)  {
+						directive.append[newLines = 2; priority = 2] // higher than Clause													
+					}
+				}
+			}
+		}
 	}
 	
 	def dispatch void format(PredicateIndicator predicateIndicator, extension IFormattableDocument document) {
