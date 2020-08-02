@@ -23,6 +23,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.LogicalO
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.UnaryExpression
 import org.palladiosimulator.supporting.prolog.services.PrologGrammarAccess
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologPackage
+import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 class PrologFormatter extends AbstractFormatter2 {
 
@@ -112,24 +113,32 @@ class PrologFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(BinaryExpression binaryExpression, extension IFormattableDocument document) {
+		binaryExpression.formatInternal(document)
 		binaryExpression.left.format
 		binaryExpression.right.format
 	}
 	
 	def dispatch void format(UnaryExpression unaryExpression, extension IFormattableDocument document) {
+		unaryExpression.formatInternal(document)
 		unaryExpression.expr.format
 	}
 	
 	def dispatch void format(LogicalAnd logicalAnd, extension IFormattableDocument document) {
+		logicalAnd.formatInternal(document)
 		logicalAnd.regionFor.keyword(expression_1000_xfyAccess.commaKeyword_1_1).append[newLine].prepend[noSpace]
 		logicalAnd.left.format
 		logicalAnd.right.format
 	}
 	
 	def dispatch void format(LogicalOr logicalOr, extension IFormattableDocument document) {
+		logicalOr.formatInternal(document)
 		logicalOr.regionFor.keyword(expression_1100_xfyAccess.semicolonKeyword_1_1).append[newLine].prepend[noSpace]
 		logicalOr.left.format
 		logicalOr.right.format
+	}
+	
+	def dispatch void format(Expression expression, extension IFormattableDocument document) {
+		expression.formatInternal(document)
 	}
 	
 	def dispatch void format(List list, extension IFormattableDocument document) {
@@ -142,4 +151,13 @@ class PrologFormatter extends AbstractFormatter2 {
 		list.tails.forEach[format]
 	}
 
+	def void formatInternal(Expression expression, extension IFormattableDocument document) {
+		interior(
+			expression.regionFor.keyword(expression_PrimaryAccess.leftParenthesisKeyword_0_0),
+			expression.regionFor.keyword(expression_PrimaryAccess.rightParenthesisKeyword_0_2)
+			
+		)[indent]
+		expression.regionFor.keyword(expression_PrimaryAccess.leftParenthesisKeyword_0_0).append[newLine]
+		expression.regionFor.keyword(expression_PrimaryAccess.rightParenthesisKeyword_0_2).prepend[newLine]
+	}
 }
