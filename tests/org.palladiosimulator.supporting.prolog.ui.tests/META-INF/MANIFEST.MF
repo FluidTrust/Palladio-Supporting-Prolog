@@ -3,7 +3,7 @@ Automatic-Module-Name: org.palladiosimulator.supporting.prolog.ui.tests
 Bundle-ManifestVersion: 2
 Bundle-Name: org.palladiosimulator.supporting.prolog.ui.tests
 Bundle-Vendor: palladiosimulator.org
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Bundle-SymbolicName: org.palladiosimulator.supporting.prolog.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.palladiosimulator.supporting.prolog.ui,

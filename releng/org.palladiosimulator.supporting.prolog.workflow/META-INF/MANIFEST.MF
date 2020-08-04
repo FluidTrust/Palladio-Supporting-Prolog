@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.palladiosimulator.supporting.prolog.workflow
 Bundle-Vendor: palladiosimulator.org
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Automatic-Module-Name: org.palladiosimulator.supporting.prolog.workflow
 Require-Bundle: org.eclipse.emf.mwe.core,
  org.eclipse.emf.mwe2.launch,

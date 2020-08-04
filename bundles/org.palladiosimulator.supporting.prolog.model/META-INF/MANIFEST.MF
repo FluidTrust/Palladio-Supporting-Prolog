@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.palladiosimulator.supporting.prolog.model;singleton:=true
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.palladiosimulator.supporting.prolog.model.prolog,
