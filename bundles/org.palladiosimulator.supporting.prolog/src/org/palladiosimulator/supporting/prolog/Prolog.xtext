@@ -69,7 +69,7 @@ TermClause returns Clause:
 ;
 
 Term:
-	CompoundTerm | AtomicNumber | /*AtomicID |*/ AtomicQuotedString | List | ControlPredicate
+	CompoundTerm | AtomicNumber | AtomicDouble | /*AtomicID |*/ AtomicQuotedString | List | ControlPredicate
 ;
 
 CompoundTerm:
@@ -78,6 +78,14 @@ CompoundTerm:
 
 AtomicNumber:
 	value=INT
+;
+
+AtomicDouble:
+	value=Double
+;
+
+Double returns ecore::EDouble:
+	INT '.' INT
 ;
 
 AtomicQuotedString:
