@@ -7,16 +7,23 @@
       license-feature="org.palladiosimulator.license.epl2"
       license-feature-version="1.0.0">
 
-   <requires>
-      <import plugin="org.palladiosimulator.branding"/>
-   </requires>
-
    <includes
          id="org.palladiosimulator.supporting.prolog.model.feature"
          version="0.0.0"/>
 
+   <requires>
+      <import plugin="org.palladiosimulator.branding"/>
+   </requires>
+
    <plugin
          id="org.palladiosimulator.supporting.prolog"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.supporting.prolog.api"
          download-size="0"
          install-size="0"
          version="0.0.0"

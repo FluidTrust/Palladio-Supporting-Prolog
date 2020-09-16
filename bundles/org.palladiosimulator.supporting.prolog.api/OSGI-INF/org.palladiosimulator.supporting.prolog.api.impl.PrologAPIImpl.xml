@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="org.palladiosimulator.supporting.prolog.api.impl.PrologAPIImpl">
+   <service scope="singleton">
+      <provide interface="org.palladiosimulator.supporting.prolog.api.PrologAPI"/>
+   </service>
+   <implementation class="org.palladiosimulator.supporting.prolog.api.impl.PrologAPIImpl"/>
+</scr:component>
