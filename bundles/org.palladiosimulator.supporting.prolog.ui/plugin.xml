@@ -433,4 +433,9 @@
 			type="text">
 		</fileTypes>
 	</extension>
+ <extension
+       point="org.palladiosimulator.supporting.prolog.api.injectorprovider">
+    <class
+          class="org.palladiosimulator.supporting.prolog.ui.PrologExecutableExtensionFactory:org.palladiosimulator.supporting.prolog.ui.PrologInjectorProviderImpl"></class>
+ </extension>
 </plugin>
