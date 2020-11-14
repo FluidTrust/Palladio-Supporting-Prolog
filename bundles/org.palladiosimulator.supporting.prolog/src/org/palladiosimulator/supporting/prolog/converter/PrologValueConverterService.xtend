@@ -20,7 +20,7 @@ class PrologValueConverterService extends Ecore2XtextTerminalConverters {
 					throw new ValueConverterException("Prolog strings have to be single quoted but given node is not",
 						node, null)
 				}
-				string.substring(0, string.length - 1)
+				string.substring(1, string.length - 1)
 			}
 		}
 	}

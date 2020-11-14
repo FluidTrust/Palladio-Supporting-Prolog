@@ -4,27 +4,49 @@
 package org.palladiosimulator.supporting.prolog.tests
 
 import com.google.inject.Inject
+import java.io.StringReader
+import org.eclipse.xtext.ParserRule
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
-import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import org.palladiosimulator.supporting.prolog.model.prolog.Program
+import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
+import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
+import org.palladiosimulator.supporting.prolog.parser.antlr.PrologParser
+import org.palladiosimulator.supporting.prolog.services.PrologGrammarAccess
+
+import static org.junit.jupiter.api.Assertions.*
 
 @ExtendWith(InjectionExtension)
 @InjectWith(PrologInjectorProvider)
 class PrologParsingTest {
+	
 	@Inject
-	ParseHelper<Program> parseHelper
+	PrologGrammarAccess grammar
+	
+	@Inject
+	PrologParser parser
 	
 	@Test
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			A.
-		''')
-		Assertions.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	def void testVariable() {
+		parse('''A''', CompoundTerm, grammar.termRule)
+	}
+	
+	@Test
+	def void testAtomicQuotedString() {
+		val actual = parse(''' 'test' ''', AtomicQuotedString, grammar.termRule)
+		assertEquals("test", actual.getValue)
+	}
+	
+	protected def <T> T parse(String text, Class<T> expectedType, ParserRule rule) {
+		val reader = new StringReader(text)
+		val result = parser.parse(rule, reader)
+		assertNotNull(result)
+		assertNotNull(result.rootASTElement)
+		val errors = result.syntaxErrors
+		assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		val root = result.rootASTElement
+		assertTrue(expectedType.isInstance(root))
+		expectedType.cast(root)
 	}
 }
