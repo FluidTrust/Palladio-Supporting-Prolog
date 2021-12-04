@@ -14,6 +14,7 @@ Workflow {
 
 	component = URISupportingDirectoryCleaner {
 		exclude = ".gitkeep"
+		exclude = ".gitkeep2"
 		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.model/src-gen"
 		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.model.edit/src-gen"
 		directory = "platform:/resource/org.palladiosimulator.supporting.prolog.model.editor/src-gen"

@@ -11,7 +11,6 @@ import org.palladiosimulator.supporting.prolog.formatting.PrologFormatter;
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
-@SuppressWarnings("restriction")
 public class PrologRuntimeModule extends AbstractPrologRuntimeModule {
 	
 	public Class<? extends IFormatter2> bindIFormatter2() {
