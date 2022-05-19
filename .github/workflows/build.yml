@@ -4,7 +4,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   Palladio-Supporting-Prolog:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: PalladioSimulator/Palladio-Build-ActionsPipeline@v2
         with:
